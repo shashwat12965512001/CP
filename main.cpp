@@ -1,47 +1,52 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
+bool isValidMeow(string s)
+{
+    // Convert everything to lowercase
+    for (char &c : s)
+    {
+        c = tolower(c);
+    }
+
+    // Remove consecutive duplicates
+    string compressed;
+    for (char c : s)
+    {
+        if (compressed.empty() || compressed.back() != c)
+        {
+            compressed += c;
+        }
+    }
+
+    // Check if it matches "meow"
+    return compressed == "meow";
+}
 
 int main()
 {
     ios::sync_with_stdio(false);
-    cout.tie(NULL);
     cin.tie(NULL);
+    cout.tie(NULL);
 
     int t;
     cin >> t;
-    for (int i = 0; i < t; i++)
+
+    while (t--)
     {
-        int n, k;
-        cin >> n >> k;
-        string opinions[n];
-        for (int j = 0; j < n; j++)
+        int n;
+        string s;
+        cin >> n >> s;
+
+        if (isValidMeow(s))
         {
-            string single;
-            for (int s = 0; s < k; s++)
-            {
-                char ch;
-                cin >> ch;
-                single += ch;
-                switch (ch)
-                {
-                case '+':
-                    break;
-                case '-':
-                    break;
-                }
-            }
-            opinions[j] = single;
+            cout << "YES\n";
         }
-        int count = 1;
-        for (int i = 1; i < n; i++)
+        else
         {
-            if (opinions[i] == opinions[0])
-            {
-                count++;
-            }
+            cout << "NO\n";
         }
-        cout << count << '\n';
     }
+
     return 0;
 }
