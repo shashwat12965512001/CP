@@ -12,52 +12,63 @@ int main()
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int x, y, a, b, count;
-        cin >> x >> y;
-        a = b = count = 0;
-        while (count < 1000)
+        int size;
+        cin >> size;
+        char last;
+        for (int i = 0; i < size; i++)
         {
-            count++;
-            if (a < x)
+            char ch;
+            cin >> ch;
+            // cout << ch << " ";
+            if (i == 0)
             {
-                if ((abs(x - a) != 1))
+                last = ch;
+                continue;
+            }
+            if (ch == 'm' || ch == 'M')
+            {
+                if (last != 'm' && last != 'M')
                 {
-                    a++;
+                    cout << "NO" << '\n';
+                    break;
+                }
+            }
+            else if (ch == 'e' || ch == 'E')
+            {
+                if (last != 'e' && last != 'E' && last != 'm' && last != 'M')
+                {
+                    cout << "NO" << '\n';
+                    break;
+                }
+            }
+            else if (ch == 'o' || ch == 'O')
+            {
+                if (last != 'e' && last != 'E' && last != 'o' && last != 'O')
+                {
+                    cout << "NO" << '\n';
+                    break;
+                }
+            }
+            else if (ch == 'w' || ch == 'W')
+            {
+                if (last != 'w' && last != 'W' && last != 'o' && last != 'O')
+                {
+                    cout << "NO" << '\n';
+                    break;
                 }
             }
             else
             {
-                if ((abs(x - a) != 1))
-                {
-                    a--;
-                }
+                cout << "NO" << '\n';
+                break;
             }
-            if (b < y)
+            last = ch;
+            if (i == size - 1)
             {
-                if ((abs(y - b) != 1))
-                {
-                    b++;
-                }
+                cout << "YES" << '\n';
             }
-            else
-            {
-                if ((abs(y - b) != 1))
-                {
-                    b--;
-                }
-            }
-            x--;
-            y--;
-            cout << "x: " << x << " | a: " << a << " | y: " << y << " | b: " << b << " \n";
         }
-        if (x == a && y == b)
-        {
-            cout << "YES" << '\n';
-        }
-        else
-        {
-            cout << "NO" << '\n';
-        }
+        // cout << '\n';
     }
     return 0;
 }
