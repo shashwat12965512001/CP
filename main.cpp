@@ -2,16 +2,17 @@
 
 using namespace std;
 
-int isPrime(int num)
+vector<int> returnIndexes(string str, string s)
 {
-    for (int i = 2; i < num; i++)
+    vector<int> indexes;
+    for (int i = 0; i <= str.length() - s.length(); i++)
     {
-        if (num % i == 0)
+        if (str.substr(i, s.length()) == s)
         {
-            return 0;
+            indexes.push_back(i);
         }
     }
-    return 1;
+    return indexes;
 }
 
 int main()
@@ -20,16 +21,44 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int num;
-    cin >> num;
-    if (isPrime(num))
+    int n, t;
+    cin >> n >> t;
+    char last;
+    string str;
+    for (int i = 0; i < n; i++)
     {
-        cout << "YES";
+        char ch;
+        cin >> ch;
+        str += ch;
     }
-    else
+    if (n <= 2)
     {
-        cout << "NO";
+        if (n == 1)
+        {
+            cout << str;
+            return 0;
+        }
+        else
+        {
+            if (str[0] == 'B' && str[1] == 'G')
+            {
+                str[0] = 'G';
+                str[1] = 'B';
+            }
+            cout << str;
+            return 0;
+        }
     }
+    for (int i = 0; i < t; i++)
+    {
+        vector<int> indexes = returnIndexes(str, "BG");
+        for (auto i : indexes)
+        {
+            str[i] = 'G';
+            str[i + 1] = 'B';
+        }
+    }
+    cout << str;
 
     return 0;
 }
