@@ -2,6 +2,18 @@
 
 using namespace std;
 
+int isPrime(int num)
+{
+    for (int i = 2; i < num; i++)
+    {
+        if (num % i == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
@@ -10,15 +22,14 @@ int main()
 
     int num;
     cin >> num;
-    cout << 1 << '\n';
-    for (int i = 2; i < num; i++)
+    if (isPrime(num))
     {
-        if (num % i == 0)
-        {
-            cout << i << '\n';
-        }
+        cout << "YES";
     }
-    cout << num << '\n';
+    else
+    {
+        cout << "NO";
+    }
 
     return 0;
 }
