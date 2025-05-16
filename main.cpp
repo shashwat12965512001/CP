@@ -2,63 +2,43 @@
 
 using namespace std;
 
-vector<int> returnIndexes(string str, string s)
-{
-    vector<int> indexes;
-    for (int i = 0; i <= str.length() - s.length(); i++)
-    {
-        if (str.substr(i, s.length()) == s)
-        {
-            indexes.push_back(i);
-        }
-    }
-    return indexes;
-}
-
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n, t;
-    cin >> n >> t;
-    char last;
-    string str;
-    for (int i = 0; i < n; i++)
+    string s;
+    cin >> s;
+    int lowercase, uppercase;
+    lowercase = uppercase = 0;
+    for (int i = 0; i < s.length(); i++)
     {
-        char ch;
-        cin >> ch;
-        str += ch;
-    }
-    if (n <= 2)
-    {
-        if (n == 1)
+        char ch = s[i];
+        if (islower(ch))
         {
-            cout << str;
-            return 0;
+            lowercase++;
         }
         else
         {
-            if (str[0] == 'B' && str[1] == 'G')
-            {
-                str[0] = 'G';
-                str[1] = 'B';
-            }
-            cout << str;
-            return 0;
+            uppercase++;
         }
     }
-    for (int i = 0; i < t; i++)
+    if (uppercase > lowercase)
     {
-        vector<int> indexes = returnIndexes(str, "BG");
-        for (auto i : indexes)
+        for (int i = 0; i < s.length(); i++)
         {
-            str[i] = 'G';
-            str[i + 1] = 'B';
+            s[i] = toupper(s[i]);
         }
     }
-    cout << str;
+    else
+    {
+        for (int i = 0; i < s.length(); i++)
+        {
+            s[i] = tolower(s[i]);
+        }
+    }
+    cout << s;
 
     return 0;
 }
