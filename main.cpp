@@ -8,24 +8,17 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n;
-    cin >> n;
-    int count = 0;
-    for (int i = 0; i < n; i++)
+    int num;
+    cin >> num;
+    cout << 1 << '\n';
+    for (int i = 2; i < num; i++)
     {
-        int num;
-        cin >> num;
-        if (num)
+        if (num % i == 0)
         {
-            cout << "HARD" << '\n';
-            break;
+            cout << i << '\n';
         }
-        count++;
     }
-    if (count == n)
-    {
-        cout << "EASY" << '\n';
-    }
+    cout << num << '\n';
 
     return 0;
 }
