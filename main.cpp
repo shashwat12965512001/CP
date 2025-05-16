@@ -10,33 +10,22 @@ int main()
 
     int n;
     cin >> n;
-    int even, odd, positive, negative;
-    even = odd = positive = negative = 0;
+    int count = 0;
     for (int i = 0; i < n; i++)
     {
         int num;
         cin >> num;
-        if (num % 2 == 0)
+        if (num)
         {
-            even++;
+            cout << "HARD" << '\n';
+            break;
         }
-        else
-        {
-            odd++;
-        }
-        if (num < 0)
-        {
-            negative++;
-        }
-        else if (num > 0)
-        {
-            positive++;
-        }
+        count++;
     }
-    cout << "Even: " << even << '\n';
-    cout << "Odd: " << odd << '\n';
-    cout << "Positive: " << positive << '\n';
-    cout << "Negative: " << negative << '\n';
+    if (count == n)
+    {
+        cout << "EASY" << '\n';
+    }
 
     return 0;
 }
