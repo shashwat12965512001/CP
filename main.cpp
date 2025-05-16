@@ -1,27 +1,6 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-
-bool isValidMeow(string s)
-{
-    // Convert everything to lowercase
-    for (char &c : s)
-    {
-        c = tolower(c);
-    }
-
-    // Remove consecutive duplicates
-    string compressed;
-    for (char c : s)
-    {
-        if (compressed.empty() || compressed.back() != c)
-        {
-            compressed += c;
-        }
-    }
-
-    // Check if it matches "meow"
-    return compressed == "meow";
-}
 
 int main()
 {
@@ -29,24 +8,35 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int t;
-    cin >> t;
-
-    while (t--)
+    int n;
+    cin >> n;
+    int even, odd, positive, negative;
+    even = odd = positive = negative = 0;
+    for (int i = 0; i < n; i++)
     {
-        int n;
-        string s;
-        cin >> n >> s;
-
-        if (isValidMeow(s))
+        int num;
+        cin >> num;
+        if (num % 2 == 0)
         {
-            cout << "YES\n";
+            even++;
         }
         else
         {
-            cout << "NO\n";
+            odd++;
+        }
+        if (num < 0)
+        {
+            negative++;
+        }
+        else if (num > 0)
+        {
+            positive++;
         }
     }
+    cout << "Even: " << even << '\n';
+    cout << "Odd: " << odd << '\n';
+    cout << "Positive: " << positive << '\n';
+    cout << "Negative: " << negative << '\n';
 
     return 0;
 }
