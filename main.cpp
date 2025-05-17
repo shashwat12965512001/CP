@@ -8,37 +8,29 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    string s;
-    cin >> s;
-    int lowercase, uppercase;
-    lowercase = uppercase = 0;
-    for (int i = 0; i < s.length(); i++)
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        char ch = s[i];
-        if (islower(ch))
+        int size, count;
+        cin >> size;
+        int arr[size];
+        count = 0;
+        for (int j = 0; j < size; j++)
         {
-            lowercase++;
+            int val;
+            cin >> val;
+            arr[j] = val;
         }
-        else
+        for (int j = 0; j < size - 1; j++)
         {
-            uppercase++;
+            if ((arr[j] % 2 == 0 && arr[j + 1] % 2 == 0) || (arr[j] % 2 != 0 && arr[j + 1] % 2 != 0))
+            {
+                count++;
+            }
         }
+        cout << count << '\n';
     }
-    if (uppercase > lowercase)
-    {
-        for (int i = 0; i < s.length(); i++)
-        {
-            s[i] = toupper(s[i]);
-        }
-    }
-    else
-    {
-        for (int i = 0; i < s.length(); i++)
-        {
-            s[i] = tolower(s[i]);
-        }
-    }
-    cout << s;
 
     return 0;
 }
