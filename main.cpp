@@ -8,54 +8,24 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int arr[5];
-    for (int i = 0; i < 5; i++)
+    int n;
+    cin >> n;
+    int first[n];
+    int second[n];
+    for (int i = 0; i < n; i++)
     {
-        int n;
-        cin >> n;
-        arr[i] = n;
+        cin >> first[i];
     }
-    int first, second;
-    first = second = 0;
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < n; i++)
     {
-        int val = arr[i];
-        if (first == 0)
-        {
-            first = val;
-        }
-        else if (second == 0 && val != first)
-        {
-            second = val;
-        }
+        cin >> second[i];
     }
-    map<int, int> mp;
-    mp[first] = 0;
-    mp[second] = 0;
-    for (int i = 0; i < 5; i++)
-    {
-        if (arr[i] == first)
-        {
-            mp[first]++;
-        }
-        else if (arr[i] == second)
-        {
-            mp[second]++;
-        }
-        else
-        {
-            cout << "No";
-            return 0;
-        }
-    }
-    if (mp[first] != 3 && mp[first] != 2)
-    {
-        cout << "No";
-    }
+    sort(first, first + n);
+    sort(second, second + n);
+    if (equal(first, first + n, second))
+        cout << "yes";
     else
-    {
-        cout << "Yes";
-    }
+        cout << "no";
 
     return 0;
 }
