@@ -8,24 +8,19 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n;
+    long long n;
     cin >> n;
-    int first[n];
-    int second[n];
-    for (int i = 0; i < n; i++)
+    long long fib[n];
+    fib[0] = 0;
+    if (n > 1)
     {
-        cin >> first[i];
+        fib[1] = 1;
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 2; i < n; i++)
     {
-        cin >> second[i];
+        fib[i] = fib[i - 1] + fib[i - 2];
     }
-    sort(first, first + n);
-    sort(second, second + n);
-    if (equal(first, first + n, second))
-        cout << "yes";
-    else
-        cout << "no";
+    cout << fib[n - 1];
 
     return 0;
 }
